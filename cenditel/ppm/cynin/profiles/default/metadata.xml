@@ -1,0 +1,6 @@
+<metadata>
+ <version>0.1</version>
+ <dependencies>
+  <dependency>profile-cenditel.ppm:default</dependency>
+ </dependencies>
+</metadata>
