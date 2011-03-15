@@ -2,7 +2,7 @@ from zope.interface import implements, Interface
 	
 from Products.Five import BrowserView
 from Products.CMFCore.utils import getToolByName
-from Products.CMFPlone.utils import _createObjectByType
+#from Products.CMFPlone.utils import _createObjectByType
 	
 from cenditel.ppm import ppmMessageFactory as _
 from cenditel.ppm import createSubFolder
@@ -40,7 +40,7 @@ class projectview(BrowserView):
         """ 
         Run the script for the creation of sub folders
         """
-        m=createSubFolder.CreatefolderActionExecutor(self.context)
+        m = createSubFolder.CreatefolderActionExecutor(self.context)
         m.sub()
         return 
  
@@ -48,7 +48,7 @@ class projectview(BrowserView):
         """
         assigned the role of Owner the selected user
         """
-        member=str(self.context.getManager())
+        member = str(self.context.getManager())
         roles = self.context.get_local_roles()
         self.context.manage_setLocalRoles(member, ['Owner'])
         return "."
