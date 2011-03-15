@@ -9,7 +9,6 @@
  <body>
  
   <div metal:fill-slot="main">
-
    
   <tal:main-macro metal:define-macro="main"
       tal:define="Assumptions here/assumptions;
@@ -28,6 +27,7 @@
                   manager here/getManager" > 
                   
       <div>
+     <a i18n:translate='label_createcontent' href="./@@addcontent">Add Content</a><br /><br />
      <a i18n:translate='label_godiscussion' href="./Discussion">Go to Discussion</a><br />
      <a i18n:translate='label_goblog' href="./Blog">Go to Blog</a><br />
      <a i18n:translate='label_gotracker' href="./PoiTracker">Go to Tracker</a><br />
@@ -37,7 +37,7 @@
     <div>
      <p tal:content="createfol"></p>
      <p tal:content="string:$roles"></p>
-     <h1 tal:content="context/Title" ></h1>
+     <h1 tal:content="context/Title"></h1>
     </div>
       <p> 
       <b></b> 
@@ -75,7 +75,7 @@
         
         <tr> 
          <span> 
-          <th i18n:translate='label_enddate'  align="left">End Date</th> 
+          <th i18n:translate='label_enddate' align="left">End Date</th> 
           <td><p tal:replace="end_date"></p></td> 
           <td></td> 
          </span> 
