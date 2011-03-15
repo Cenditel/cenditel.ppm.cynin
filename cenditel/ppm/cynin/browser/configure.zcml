@@ -1,11 +1,9 @@
 <configure
     xmlns="http://namespaces.zope.org/zope"
     xmlns:browser="http://namespaces.zope.org/browser"
-    i18n_domain="cenditel.ppm">
+    i18n_domain="ppm">
 
   <include package="plone.app.contentmenu" />
-
-  <!-- -*- extra stuff goes here -*- -->
 
   <browser:page
       for="cenditel.ppm.interfaces.folderproj.Ifolderproj"
@@ -25,11 +23,26 @@
       permission="zope.Public"
       />
 
- <browser:page
+  <browser:page
       for="cenditel.ppm.interfaces.folderproj.Ifolderproj"
       name="newproposal"
       class="cenditel.ppm.browser.proposaltemplate.proposaltemplateview"
       permission="cmf.AddPortalContent"
       />
+      
+  <browser:page
+      for="cenditel.ppm.interfaces.folderproj.Ifolderproj"
+      name="createtemplate"
+      class=".createtemplate.createtemplateview"
+      permission="cmf.AddPortalContent"
+      />  
+      
+      
+  <browser:page
+      for="cenditel.ppm.interfaces.project.Iproject"
+      name="addcontent"
+      class=".addcontent.addcontentview"
+      permission="cmf.AddPortalContent"
+      />        
 
 </configure>
