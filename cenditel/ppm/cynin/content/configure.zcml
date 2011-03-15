@@ -27,11 +27,11 @@
   <class class=".project.project">
     <require
         permission="zope2.View"
-        interface="cenditel.ppm.interfaces.Iproject"
+        interface="..interfaces.Iproject"
         />
     <require
         permission="cmf.ModifyPortalContent"
-        set_schema="cenditel.ppm.interfaces.Iproject"
+        set_schema="..interfaces.Iproject"
         />
   </class>
 
