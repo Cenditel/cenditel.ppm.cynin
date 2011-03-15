@@ -1,0 +1,67 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="ppm">
+<body>
+
+<div metal:fill-slot="main">
+    <div metal:define-macro="body">
+
+
+    <tal:main-macro metal:define-macro="main"
+           tal:define="search view/create;
+                      ">
+           
+      <form name="createtemplate">
+      <table>
+        <tr>
+         <th i18n:translate='label_creationt'>Creation of Template</th>
+         <th></th>
+        </tr>
+        
+        
+        
+        
+        <!-- Subject -->
+        
+         <td class="field">
+          <label i18n:translate='label_titletemplate' for="subj">
+           Title of Template
+          </label>
+         </td>
+         <td>
+          <input type="text" name="subj" id="subj" size="40" />
+         </td>
+        
+
+        <tr>
+
+          <td></td>
+          <td>
+           <input i18n:attributes= "value label_valuebottonnext;
+                                    title label_valuebottoncreate"
+           
+                  type="submit"
+                  name="form.button.next"
+                  value="Next" 
+                  title="create" />
+           <input i18n:attributes= "value label_valuebottoncancel"
+           
+                  class="standalone" type="submit"
+                  name="form.button.cancel"
+                  value="Cancel" />
+          </td>
+        </tr>
+      </table>
+
+      </form>
+  
+</tal:main-macro>
+
+</div>
+</div>
+</body>
+</html>
