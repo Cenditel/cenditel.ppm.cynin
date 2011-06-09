@@ -9,28 +9,52 @@ from Products.Archetypes.utils import Message
 from Products.ATContentTypes.content import base
 from Products.ATContentTypes.content import schemata
 
-from cenditel.ppm import ppmMessageFactory as _
-from cenditel.ppm.config import PROJECTNAME
+from cenditel.ppm.cynin import ppmcyninMessageFactory as _
+from cenditel.ppm.cynin.config import PROJECTNAME
 from cenditel.ppm.interfaces import Iproposals
+from cenditel.ppm.validator import GroupsValidator
+from Products.DataGridField import DataGridField, DataGridWidget
 
 proposalsSchema = schemata.ATContentTypeSchema.copy() + atapi.Schema((
 
-    # -*- Your Archetypes field definitions here ... -*-
+    # -*- Your Archetypes field definitions here ... -*-    
+    
     atapi.TextField(
         name='templatest',
         widget=atapi.RichWidget(
             label=_(u"Summary"),
-            description=_(u"template of the proposal"),
-            rows="10",
+            description=_(u"Proposal summary of a future project"),
+            allow_file_upload=False,
+            rows=5,
+            cols=40,
         ),
-        default='',
-        storage=atapi.AnnotationStorage(),
-        default_content_type = 'text/restructured',
-        allowable_content_types=('text/plain', 'text/restructured', 'text/html',),
+        allowable_content_types = ('text/html',),
+        default_content_type = 'text/html',
         default_output_type = 'text/x-html-safe',
+        storage=atapi.AnnotationStorage(),
+        validators=('isTidyHtmlWithCleanup',), 
         searchable=True,
         required=False
     ),
+    
+    DataGridField(
+        name='group',
+        widget = DataGridWidget(
+            label=_(u"Groups"),
+            description=_(u"Enter a list of groups (departments / communities / sections) within this portfolio."),
+        ),
+        schemata='Groups',
+        required=True,
+        validators = ('isGroups',),
+        default=(
+            { 
+             'title' : '', 
+             'Description' : ''
+            },
+        ),
+        columns=(_(u'Title'),_(u'Description'))
+    ),
+
 
 ))
 

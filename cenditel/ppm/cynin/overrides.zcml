@@ -1,0 +1,24 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    i18n_domain="cenditel.ppm">
+
+
+  <browser:viewlet
+      name="ubify.addnewmenu"
+      for="*"
+      manager="ubify.viewlets.browser.interfaces.IAddNewMenuManager"
+      class=".browser.addnewmenu.AddNewMenuViewletPpm"
+      permission="zope2.View"
+      />
+      <!--manager="cenditel.ppm.interfaces.addmenu.IAddNewMenuManagerppm" -->
+      
+            
+  <browser:viewlet
+      name="ubify.viewlets.applications_menu"
+      manager="ubify.viewlets.browser.interfaces.IApplicationsMenu"
+      class=".browser.ApplicationsMenuViewlet.ApplicationsMenuViewletPpm"
+      permission="zope2.View"
+      />      
+     <!--manager="cenditel.ppm.interfaces.addmenu.IApplicationMenuppm" -->
+</configure>

@@ -2,7 +2,7 @@
 <configure
     xmlns="http://namespaces.zope.org/zope"
     xmlns:plone="http://namespaces.plone.org/plone"
-    i18n_domain="ppm">
+    i18n_domain="ppmcynin">
 
   <!-- Ensure Plone's portlets ZCML has already been processed;
        without this, we may get a permission lookup error -->
@@ -11,10 +11,10 @@
   
   <plone:portlet
       name="ppm.navigation"
-      interface=".navigation.INavigationPortlet"
-      assignment=".navigation.Assignment"
-      renderer=".navigation.Renderer"
-      addview=".navigation.AddForm"
+      interface="cenditel.ppm.portlets.navigation.INavigationPortlet"
+      assignment="cenditel.ppm.portlets.navigation.Assignment"
+      renderer="cenditel.ppm.portlets.navigation.Renderer"
+      addview="cenditel.ppm.portlets.navigation.AddForm"
       />
 <!--
   <plone:portlet

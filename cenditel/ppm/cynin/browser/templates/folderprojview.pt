@@ -11,16 +11,13 @@
   <div metal:fill-slot="main">
 	
    <tal:main-macro metal:define-macro="main"
-        tal:define="Element view/searching;             
-                    createfolder view/createfol;
+        tal:define="createfolder view/createfol;
+                    Element view/searching;
                     Getproposals view/proposals;
-                    GettingTags view/GetTags"> 
-	   
+                    GettingTags view/GetTags">
+	<!---   
     <div>
      <p tal:content="createfolder"></p>
-     <img src="file_icon.gif" alt="Create New Template" 
-          i18n:attributes="alt label_createnewtemplate" />
-     <a href="./@@createtemplate" i18n:translate='label_createnewtemplate'>Create New Template</a><br /><br />
      <img src="++resource++cenditel.ppm.images/proposal.gif" alt="Create New Proposal" 
           i18n:attributes="alt label_createnewproposal" />
      <a href="./@@newproposal" title="Create New Proposal" 
@@ -32,10 +29,8 @@
         i18n:attributes="title label_createnewproject" i18n:translate="label_createnewproject">Create New Project</a>
      <br /><br />
     </div>
-
+     -->
     <br />
-
-    <div tal:replace="structure provider:plone.belowcontentbody" />
       
     <dl id="completedProposals" class="collapsible inline "> 
 
@@ -122,6 +117,7 @@
           <th i18n:translate="label_budgetstatus">Budget Status</th> 
           <th i18n:translate="label_begindate">Begin Date</th> 
           <th i18n:translate="label_enddate">End Date</th> 
+          <th i18n:translate="label_suscribers">Suscribers</th> 
           <th i18n:translate="label_tags">Tags</th> 
          </tr> 
         </thead> 
@@ -130,12 +126,18 @@
     
          <tr tal:repeat="projectTitle python:Element">  
           <span tal:define="link projectTitle/absolute_url">
-           <td><a href="" tal:attributes="href link"><span tal:content="projectTitle/Title"></span></a></td> 
+           <td><a href="" tal:attributes="href link"><span tal:content="projectTitle/Title" /></a></td> 
            <td tal:content="projectTitle/manager"></td> 
-           <td tal:define="status projectTitle/status; py_color python:(status == 'Time Stimated' and 'White') or (status == 'Delayed' and 'Red') or (status == 'Completed' and 'Green') or (status != 'Completed' and 'White')" tal:attributes="bgcolor string:$py_color" tal:content="status"></td> 
-           <td tal:define="bud_status projectTitle/bud_status ; py_budcolor python:(bud_status == 'On Budget' and 'Yellow') or (bud_status == 'Over Budget' and 'Red') or (bud_status == 'Under Budget' and 'Green') or (bud_status != 'Under Budget' and 'White')" tal:attributes="bgcolor string:$py_budcolor" tal:content="bud_status"></td>  
+           <td tal:define="status projectTitle/status; 
+                           py_color python:(status == 'Time Stimated' and 'White') or (status == 'Delayed' and 'Red') or (status == 'Completed' and 'Green') or (status != 'Completed' and 'White')" 
+               tal:attributes="bgcolor string:$py_color" 
+               tal:content="status"></td> 
+           <td tal:define="bud_status projectTitle/bud_status ; py_budcolor python:(bud_status == 'On Budget' and 'Yellow') or (bud_status == 'Over Budget' and 'Red') or (bud_status == 'Under Budget' and 'Green') or (bud_status != 'Under Budget' and 'White')"
+               tal:attributes="bgcolor string:$py_budcolor"
+               tal:content="bud_status"></td>  
            <td tal:content="projectTitle/begin_date"></td> 
            <td tal:content="projectTitle/end_date" bgcolor="White"><a href=""><br /></a></td> 
+           <td tal:content="projectTitle/suscribers" bgcolor="White"></td> 
            <td tal:content="projectTitle/tags"><tal:comment replace="nothing">Tags</tal:comment></td> 
           </span>
          </tr>
@@ -151,8 +153,6 @@
       </dd>
 
     </dl> 
-   
-   </div> 
     
    <!--proposal list -->
     <h1 i18n:translate='label_allproposals'>All Proposals</h1>
@@ -191,9 +191,13 @@
     </dl> 
    
    </div> 
+        
     
-    
-    
+
+   <div tal:replace="structure provider:plone.belowcontentbody" /> 
+
+   </div>  
+
     </tal:main-macro>
 
   </div>

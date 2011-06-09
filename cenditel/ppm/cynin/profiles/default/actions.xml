@@ -16,23 +16,11 @@
    <property name="visible">True</property>
   </object>
   
-    <object name="select_template" meta_type="CMF Action" i18n:domain="cenditel.ppm">
-   <property name="title" i18n:translate="">Create Template</property>
-   <property name="description" i18n:translate=""></property>
-   <property name="url_expr">string:${object_url}/@@createtemplate</property>
-   <property name="icon_expr"></property>
-   <property name="available_expr"></property>
-   <property name="permissions">
-    <element value="Modify portal content"/>
-   </property>
-   <property name="visible">True</property>
-  </object>
   
-  
-     <object name="select_template" meta_type="CMF Action" i18n:domain="cenditel.ppm">
-   <property name="title" i18n:translate="">Add Content</property>
+  <object name="select_template" meta_type="CMF Action" i18n:domain="ppm">
+   <property name="title" i18n:translate="">Search Project</property>
    <property name="description" i18n:translate=""></property>
-   <property name="url_expr">string:${object_url}/@@addcontent</property>
+   <property name="url_expr">string:${object_url}/@@SearchPro</property>
    <property name="icon_expr"></property>
    <property name="available_expr"></property>
    <property name="permissions">

@@ -5,33 +5,33 @@
     i18n_domain="ppm">
 
   <!-- configure your content components here -->
+  
+  <class class="cenditel.ppm.proposals.proposals">
+    <require
+        permission="zope2.View"
+        interface="cenditel.ppm.interfaces.Iproposals"
+        />
+  </class>
+
+  <class class="cenditel.ppm.project.project">
+    <require
+        permission="zope2.View"
+        interface="cenditel.ppm.interfaces.Iproject"
+        />
+    <require
+        permission="cmf.ModifyPortalContent"
+        set_schema="cenditel.ppm.interfaces.Iproject"
+        />
+  </class>
 
   <class class=".folderproj.folderproj">
     <require
         permission="zope2.View"
-        interface="..interfaces.Ifolderproj"
+        interface="cenditel.ppm.interfaces.Ifolderproj"
         />
     <require
         permission="cmf.ModifyPortalContent"
-        set_schema="..interfaces.Ifolderproj"
-        />
-  </class>
-  
-  <class class=".proposals.proposals">
-    <require
-        permission="zope2.View"
-        interface="..interfaces.Iproposals"
-        />
-  </class>
-
-  <class class=".project.project">
-    <require
-        permission="zope2.View"
-        interface="..interfaces.Iproject"
-        />
-    <require
-        permission="cmf.ModifyPortalContent"
-        set_schema="..interfaces.Iproject"
+        set_schema="cenditel.ppm.interfaces.Ifolderproj"
         />
   </class>
 

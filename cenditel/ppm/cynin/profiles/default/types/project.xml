@@ -15,12 +15,13 @@
 
   <property name="allowed_content_types">
      <element value="Folder"/>
-     <element value="Ploneboard"/>
-     <element value="PoiTracker"/>
-     <element value="Weblog"/>
-     <element value="Blog Entry"/>
+     <element value="Event"/>
      <element value="Discussion"/>
-     </property>
+     <element value="PoiTracker"/>
+     <element value="Blog Entry"/>
+     <element value="ContentSpace"/>
+  </property>
+
   <property name="allow_discussion">False</property>
   <property name="default_view">@@project_view</property>
 

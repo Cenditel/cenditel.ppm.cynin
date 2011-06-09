@@ -3,8 +3,9 @@ from zope.interface import implements, Interface
 from Products.Five import BrowserView
 from Products.CMFCore.utils import getToolByName
 #from Products.CMFPlone.utils import _createObjectByType
+from Products.ATContentTypes.lib import constraintypes
 	
-from cenditel.ppm import ppmMessageFactory as _
+from cenditel.ppm.cynin import ppmcynMessageFactory as _
 from cenditel.ppm import search
 	
 class Ifolderprojview(Interface):
@@ -45,11 +46,10 @@ class folderprojview(BrowserView, object):
         """
         the tag list that are within the portfolio of projects
         """
-        listadetags=[]
-    	for elemento in self.result:
-    	    listadetags.extend(elemento.getTags())
-        return listadetags
-        
+        tagsList=[]
+    	for element in self.result:
+    	    tagsList.extend(element.getTags())
+        return tagsList
         
     def proposals(self):
         """
@@ -60,21 +60,21 @@ class folderprojview(BrowserView, object):
         for child in holder.getChildNodes():
             listid.append(child.getId())
             
-        result=catalog.searchResults(portal_type='proposals', review_state='published', getId = listid)
+        result=catalog.searchResults(portal_type='proposals', review_state='approved_by_organization_council', getId = listid)
         listobj=[]
         dic=[]
     	for brain in result:
     		dic=brain
     		obj=dic.getObject()
     		listobj.append(obj)
-    	return listobj
-        
+    	return listobj       
+
     def createfol(self):
         """
         Create the containing folder of the proposals
         and a template 
         """
-        holder=self.context
+        holder = self.context
         txt = """Subject: $Subject
 
 Group: $Group
@@ -96,11 +96,28 @@ contents with the information you want collected.
 
 """
         try:
+            '''
+            self.context.invokeFactory("Folder", title="Proposal Templates", id="Templates")
+            # Enable contstraining
+            self.context.setConstrainTypesMode(constraintypes.ENABLED)
+            # Types for which we perform Unauthorized check
+            self.context.setLocallyAllowedTypes(['FCKTemplate'])
+            # Add new... menu  listing
+            folder.setImmediatelyAddableTypes(['FCKTemplate'])
+            # Object reindex for enabled to search
+            self.context.reindexObject()
+            
+            foldert = getattr(holder, "Templates")
+            foldert.invokeFactory("FCKTemplate", title="Example", id="example")
+            
+            example = getattr(foldert, "example")
+            example.setText(txt)
+            '''
             self.context.invokeFactory("Folder", title="Proposal Templates", id="Templates")
             
             foldert=getattr(holder, "Templates")
             
-            foldert.invokeFactory("FCKTemplate", title="example", id="example")
+            foldert.invokeFactory("FCKTemplate", title="Example", id="example")
             
             example=getattr(foldert, "example")
 

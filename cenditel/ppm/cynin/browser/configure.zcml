@@ -17,7 +17,7 @@
 
   <browser:page
       for="cenditel.ppm.interfaces.project.Iproject"
-      class=".projectview.projectview"
+      class="cenditel.ppm.cynin.browser.projectview.projectview"
       name="project_view"
       template="templates/projectview.pt"
       permission="zope.Public"
@@ -26,23 +26,21 @@
   <browser:page
       for="cenditel.ppm.interfaces.folderproj.Ifolderproj"
       name="newproposal"
-      class=".proposaltemplate.proposaltemplateview"
+      class="cenditel.ppm.proposaltemplate.proposaltemplateview"
       permission="cmf.AddPortalContent"
       />
+
+  <browser:resourceDirectory
+      name="cenditel.ppm.images"
+      directory="images"
+      layer="cenditel.ppm.interfaces.folderproj.IfolderprojSpecific"
+      />
       
-  <browser:page
-      for="cenditel.ppm.interfaces.folderproj.Ifolderproj"
-      name="createtemplate"
-      class=".createtemplate.createtemplateview"
-      permission="cmf.AddPortalContent"
-      />  
-      
-      
-  <browser:page
+ <browser:page
       for="cenditel.ppm.interfaces.project.Iproject"
-      name="addcontent"
-      class=".addcontent.addcontentview"
+      name="SearchPro"
+      class="cenditel.ppm.browser.projectportlet.projectportletview"
       permission="cmf.AddPortalContent"
-      />        
+      />      
 
 </configure>
