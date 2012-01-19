@@ -5,7 +5,7 @@ from Products.CMFCore.utils import getToolByName
 #from Products.CMFPlone.utils import _createObjectByType
 from Products.ATContentTypes.lib import constraintypes
 	
-from cenditel.ppm.cynin import ppmcynMessageFactory as _
+from cenditel.ppm import ppmMessageFactory as _
 from cenditel.ppm import search
 	
 class Ifolderprojview(Interface):
