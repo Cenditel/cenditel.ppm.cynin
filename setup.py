@@ -6,7 +6,7 @@ version = '0.1'
 setup(name='cenditel.ppm.cynin',
       version=version,
       description="A Integration of Project Portfolio Management Framework NG on Cyn.in 3.1.3.",
-      long_description=open("README.txt").read() + "\n" +
+      long_description=open("README.rst").read() + "\n" +
                        open(os.path.join("docs", "HISTORY.txt")).read(),
       # Get more strings from
       # http://pypi.python.org/pypi?:action=list_classifiers
